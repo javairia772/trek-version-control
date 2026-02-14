@@ -1,138 +1,145 @@
-Trek – Mini Git Clone 🌌
-
-Trek 1.0 is a simplified Git-inspired version control system implemented in Python. It supports commits, branching, merging, DAG visualization, and undo/redo operations—perfect for learning the inner workings of Git!
-
-Features
-
-Repository Initialization
-Initialize a .trek repository in any directory:
-
-trek> init
+# Trek – Mini Git Clone 🌌
+*Simplified Git-inspired version control system implemented in Python.*
 
 
-Staging & Commit
-Stage files and save commits:
+[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
 
-trek> add file1.py file2.py
-trek> commit "Initial commit"
+Trek 1.0 lets you learn Git internals by doing: commits, branching, merging, DAG visualization, undo/redo, and more—all in a simple Python CLI.
 
 
-Branching
-Create, list, and switch branches:
 
-trek> branch               # List all branches
-trek> branch feature       # Create & switch to new branch
-trek> checkout master      # Switch back to master
+---
 
+## Features
 
-Merge
-Merge another branch into the current branch (detects conflicts):
+- **Repository Initialization:** `trek> init`
+- **Staging & Commit:** `trek> add file.py` → `trek> commit "message"`
+- **Branching:** `trek> branch feature` → `trek> checkout master`
+- **Merging:** `trek> merge feature` (detects conflicts)
+- **Undo / Redo / Reset:** `trek> undo`, `trek> redo`, `trek> reset <commit_hash>`
+- **DAG Visualization:** `trek> graph`
+- **Status Check:** `trek> status`
 
-trek> merge feature
+---
+## Installation
+### Users
 
-
-Undo / Redo / Reset
-Navigate history or reset repository to a previous commit:
-
-trek> undo
-trek> redo
-trek> reset <commit_hash>
-
-
-DAG Visualization
-Show an ASCII commit graph with branches:
-
-trek> graph
-
-
-Example:
-
-* a1b2c3d (master)
-    * 5f6e7d8 (feature)
-        * 1a2b3c4
-
-
-Status
-Check current HEAD and branch:
-
-trek> status
-
-
-Exit CLI
-
-trek> exit
-
-Installation
-
-Clone this repository:
-
-git clone https://github.com/yourusername/trek.git
-cd trek
-
-
-Install dependencies (optional for colored output):
-
+```bash
+git clone https://github.com/javairia772/trek-version-control.git
+cd trek-version-control
 pip install colorama
-
-
-Run the CLI:
-
 python main.py
+```
 
-Project Structure
-trek/
- ├─ __init__.py
- ├─ config.py       # Constants like .trek paths
- ├─ utils.py        # Helper functions
- ├─ repository.py   # init repo
- ├─ staging.py      # add/stage files
- ├─ commit.py       # commit logic
- ├─ branch.py       # branch & checkout
- ├─ merge.py        # merge logic
- ├─ reset.py        # undo/redo/reset
- ├─ dag.py          # commit DAG visualization
-main.py             # CLI entry point
+### Developers
 
-How to Use
+1. Clone the repository
+    ```bash
+    git clone https://github.com/javairia772/trek-version-control.git
+    cd trek-version-control
+    ```
 
-Initialize a new repo:
+2. Create a virtual environment:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # Linux/Mac
+    venv\Scripts\activate     # Windows
+    ```
 
-trek> init
-
-
-Stage and commit files:
-
-trek> add file1.py
-trek> commit "Add file1"
+3. Install dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 
-Create a branch and switch to it:
+4. Edit files in trek/ modules or main.py.
 
-trek> branch feature
-trek> add file2.py
-trek> commit "Add file2"
-
-
-Merge branches:
-
-trek> checkout master
-trek> merge feature
+5. Test your changes with:
+    ```bash
+    python main.py
+    ```
+    
+---
 
 
-Visualize history:
+## 📂 Project Structure
 
-trek> graph
+```text
+Trek1.0/
+ ├─ main.py             # CLI entry point
+ ├─ requirements.txt
+ ├─ README.md
+ ├─ trek/
+ │   ├─ __init__.py
+ │   ├─ config.py       # Constants like .trek paths
+ │   ├─ utils.py        # Helper functions
+ │   ├─ repository.py   # init repo
+ │   ├─ staging.py      # add/stage files
+ │   ├─ commit.py       # commit logic
+ │   ├─ branch.py       # branch & checkout
+ │   ├─ merge.py        # merge logic
+ │   ├─ reset.py        # undo/redo/reset
+ │   └─ dag.py          # commit DAG visualization
+ └─ .gitignore
+ ```
+ ---
+ 
+## Usage
 
-Learning Outcomes
+-  #### Initialize repository
+    ```bash
+    trek> init
+    ```
 
-Understand version control internals
+-  #### Stage and commit files
+    ```bash
+    trek> add file1.py
+    trek> commit "Add file1"
+    ```
 
-Learn commit objects, trees, and branches
+- #### Branching and switching
+    ```bash
+    trek> branch feature
+    trek> add file2.py
+    trek> commit "Add file2"
+    trek> checkout master
+    ```
+- #### Merge branches
+    ```bash
+    trek> merge feature
+    ```
 
-Explore DAG structure and merges
+- #### Visualize history
+    ```bash
+    trek> graph
+    ```
 
-Practice Python file I/O, hashing, and CLI design
+- #### Undo / Redo / Reset
+    ```bash
+    trek> undo
+    trek> redo
+    trek> reset <commit_hash>
+    ```
+---
+## 🧠 Learning Outcomes
+* Understand version control internals
+* Learn commit objects, trees, and branches
+* Explore DAG structure and merges
+* Practice Python file I/O, hashing, and CLI design
 
-License
+---
 
-MIT License – free to use and modify
+#### ⚠ Known Issues
+
+* Merge conflict resolution is manual only
+* Only supports text files currently
+* Large repositories may slow down DAG visualization
+
+---
+
+## 🤝 Contributing
+
+- Follow PEP8 coding standards
+- Write descriptive commit messages
+- Document new features in README.md
+---
